@@ -12,6 +12,7 @@ RUN mkdir -p ${SCRIPT_HOME}
 COPY config/start.sh ${SCRIPT_HOME}/start.sh
 COPY config/env.sh ${SCRIPT_HOME}/env.sh
 COPY config/example.properties /home/tmax/example.properties
+COPY config/application.properties /home/tmax/application.properties
 
 RUN chmod -R 755 /home/tmax/script
 
