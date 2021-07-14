@@ -15,7 +15,7 @@ public class ControllerV0 {
   @Autowired
   private ServiceBase serviceMvc;
 
-  @GetMapping
+  @GetMapping(value="/hello")
   public ResponseEntity<Object> getPropertyVars(){
     serviceMvc.getPropertyVars();
     return new ResponseEntity<>("hello", HttpStatus.OK);
