@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @PropertySources({
   @PropertySource("classpath:example.properties"),
-  @PropertySource(value="file:/home/tmax/example.properties", ignoreResourceNotFound=true),
+  @PropertySource(value="file:${docker.config.url}/example.properties", ignoreResourceNotFound=true),
 })
 
 public class ServiceV0 implements ServiceBase {
