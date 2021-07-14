@@ -9,20 +9,24 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-@PropertySources({
-  @PropertySource("classpath:example.properties"),
-  @PropertySource(value="file:${docker.config.url}/example.properties", ignoreResourceNotFound=true),
-})
-
+@PropertySource("classpath:config/${spring.profiles.active}/example.properties")
 public class ServiceV0 implements ServiceBase {
-
-  @Autowired
-  public ServiceV0(@Value("${value}") String value){
-    log.info("Service class generate: " + value);
-  }
 
   @Value("${value}")
   String methodValue;
+
+  @Value("${spring.profiles.active}")
+  String profile;
+
+  @Autowired
+  public ServiceV0(@Value("${spring.profiles.active}") String profile, 
+  @Value("${value}") String value,
+  @Value("${server.port}") String port,
+  @Value("${min}")String minyes){
+    
+    log.info("profile={}, Service class generate: {}" , profile, value);
+    log.info("{}, {}", port, minyes);
+  }
 
   @Override
   public void getPropertyVars() {
